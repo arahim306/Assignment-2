@@ -1,0 +1,63 @@
+.jumbotron
+{
+	background-color:#1E90FF;
+}
+
+.table
+{
+	color:#FFFFFF;
+	background-color:#FF4500;
+}
+
+.table-striped>tbody>tr:nth-child(odd)>td, 
+.table-striped>tbody>tr:nth-child(odd)>th {
+   background-color: #FF8C00;
+ }
+
+ .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #000080;
+}
+
+.deleteButton {
+	background-color:#448feb;
+	-moz-border-radius:20px;
+	-webkit-border-radius:20px;
+	border-radius:20px;
+	border:2px solid #ffffff;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Trebuchet MS;
+	font-size:12px;
+	padding:4px 8px;
+	text-decoration:none;
+}
+.deleteButton:hover {
+	background-color:#5146e3;
+}
+.deleteButton:active {
+	position:relative;
+	top:1px;
+}
+
+.addButton {
+	background-color:#ff9900;
+	-moz-border-radius:20px;
+	-webkit-border-radius:20px;
+	border-radius:20px;
+	border:2px solid #ffffff;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Trebuchet MS;
+	font-size:12px;
+	padding:4px 8px;
+	text-decoration:none;
+}
+.addButton:hover {
+	background-color:#ff8400;
+}
+.addButton:active {
+	position:relative;
+	top:1px;
+}

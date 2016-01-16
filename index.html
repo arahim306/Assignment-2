@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="index.css">
+  </head>
+  <body style="background-color:#000080;" ng-app="directoryApp">
+    <div class="container">
+      <div class="row">
+        <h1 style="color:white">UF Directory App</h1>
+      </div>
+      <div class="row" ng-controller="ListingsController">
+        <div class="col-md-6">
+          <div class="jumbotron jumbotron-material-blue-grey-200">
+            <div class="input-group" id="searchBar">
+              <!-- 
+                  Implement a way to filter through listings using the search bar 
+                -->
+              <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-search"></span></span>
+              <input ng-model="searchBarContents" type="text" class="form-control" placeholder="Search">
+            </div>
+            <div class="tableWrapper">
+              <table class="table table-striped table-hover">
+                <tr>
+                  <th>Code</th>
+                  <th>Building Name</th>
+                  <th></th>
+                </tr>
+                <!--
+                 populate the rows with the code and name of each listing 
+                  -->
+                <tr ng-repeat="x in listings | filter: searchBarContents" ng-click="showDetails($index)">
+                  <td>{{ x.code }}</td>
+                  <td>{{ x.name }}</td>
+                  <!-- 
+                 include a way to remove individual listings
+                  -->
+                  <td><a href="#" class="deleteButton" ng-click="deleteListing($index)">Delete</a></td>
+                  <!-- <button ng-click="deleteListing($index)">Delete</button> -->
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="jumbotron">
+            <h2 style="color:white">Detailed Information</h2>
+            <h2></h2>
+            <!-- Start Details -->
+            <div class="tableWrapper">
+              <table class="table table-striped table-hover">
+                
+                <tr>
+                  <th>Latitude</th>
+                  <td>{{ latitude }}</th>
+                </tr>
+               
+                <tr>
+                  <th>Longitude</th>
+                  <td>{{ longitude }}</th>
+                </tr>
+
+                <tr>
+                  <th>Address</th>
+                  <td>{{ address }}</th>
+                </tr>
+
+              </table>
+            </div>
+          </div>
+          <!-- End Details -->
+          <!-- Start Add Form -->
+          <div class="jumbotron">
+            <h2 style="color:white">Add a Listing</h2>
+            <h2></h2>
+            <form class="form-horizontal ng-valid ng-dirty" role="form" ng-submit="addRow()">
+               
+              <div class="form-group">
+                <label class="col-md-2 control-label" style="color:white">Code</label>
+                <div class="col-md-4">
+                  <input type="text" class="form-control ng-valid ng-dirty" name="code" ng-model="code">
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label class="col-md-2 control-label" style="color:white">Name</label>
+                <div class="col-md-4">
+                  <input type="text" class="form-control ng-valid ng-dirty" name="name" ng-model="name">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-md-2 control-label" style="color:white">Latitude</label>
+                <div class="col-md-4">
+                  <input type="text" class="form-control ng-valid ng-dirty" name="latitude" ng-model="latitude">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-md-2 control-label" style="color:white">Longitude</label>
+                <div class="col-md-4">
+                  <input type="text" class="form-control ng-valid ng-dirty" name="longitude" ng-model="longitude">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-md-2 control-label" style="color:white">Address</label>
+                <div class="col-md-4">
+                  <input type="text" class="form-control ng-valid ng-dirty" name="address" ng-model="address">
+                </div>
+              </div>
+
+              <div class="form-group">                
+                <div style="padding-left:110px">
+                  <a href="#" class="addButton" ng-click="addListing()">Add</a>
+                  <a href="#" class="addButton" ng-click="clearText()">Clear</a>
+                </div>
+              </div>
+
+            </form>
+          
+          </div>
+          <!-- End Add Form -->
+        </div>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+    <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
+    <script src="app.js"></script>
+    <script src="listingController.js"></script>
+    <script src="listingFactory.js"></script>
+  </body>
+</html>
